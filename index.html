@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mente Fría — Lote 001</title>
+<meta name="description" content="Cold brew de especialidad hecho en Medellín. El Lote 001 se presenta a un grupo cerrado de 50 personas. Solicita tu lugar.">
+<meta property="og:title" content="Mente Fría — Lote 001">
+<meta property="og:description" content="50 lugares. Por solicitud.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --grafito:#111315; --grafito-2:#1A1D20; --hueso:#F2F0EB; --hielo:#8FB3CC;
+  --gris:#A3A8AD; --linea:#2C3034; --error:#E8A598;
+  --sans:'Archivo','Helvetica Neue',Helvetica,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--grafito);color:var(--hueso);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--hielo)}
+:focus-visible{outline:2px solid var(--hielo);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+
+header{display:flex;justify-content:space-between;align-items:center;padding:28px 0}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--hueso)}
+.brand-name{font-weight:600;letter-spacing:.14em;font-size:17px}
+.city{color:var(--gris);font-size:15px}
+
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:64px;align-items:center;padding:72px 0 96px}
+.hero h1{font-weight:600;font-size:clamp(40px,6vw,72px);line-height:1.02;letter-spacing:-.015em;margin:0 0 28px}
+.hero p{color:#CDD1D4;font-size:19px;max-width:30em;margin:0 0 36px}
+.btn{display:inline-block;background:var(--hueso);color:var(--grafito);font:600 16px/1 var(--sans);padding:18px 28px;border:0;border-radius:2px;text-decoration:none;cursor:pointer}
+.btn:hover{background:#fff}
+.btn[disabled]{opacity:.6;cursor:wait}
+
+.seats{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:10px}
+.seats svg{width:100%;height:auto;display:block}
+.seats circle{fill:none;stroke:#4A5056;stroke-width:3}
+.seats line{stroke:var(--hielo);stroke-width:3;stroke-dasharray:56;stroke-dashoffset:0}
+.seats-caption{margin-top:18px;color:var(--gris);font-size:15px}
+@media (prefers-reduced-motion:no-preference){
+  .seats line{animation:draw .6s ease-out both}
+}
+@keyframes draw{from{stroke-dashoffset:56}to{stroke-dashoffset:0}}
+
+section{border-top:1px solid var(--linea);padding:80px 0}
+.split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px}
+h2{font-weight:600;font-size:clamp(28px,3.4vw,40px);line-height:1.1;letter-spacing:-.01em;margin:0}
+.lead{font-size:19px;color:#CDD1D4;margin:0 0 32px;max-width:34em}
+.specs{display:flex;flex-wrap:wrap;gap:40px;margin:0;padding:0;list-style:none}
+.specs li{display:flex;flex-direction:column}
+.specs b{font:500 30px/1.1 var(--mono);color:var(--hueso)}
+.specs span{color:var(--gris);font-size:15px;margin-top:6px}
+
+.perks{margin:0;padding:0;list-style:none}
+.perks li{padding:22px 0;border-bottom:1px solid var(--linea)}
+.perks li:first-child{padding-top:0}
+.perks h3{font-size:20px;font-weight:600;margin:0 0 4px}
+.perks p{margin:0;color:#CDD1D4}
+
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 32px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+label{font-size:15px;color:#CDD1D4}
+input,textarea,select{font:400 17px/1.4 var(--sans);color:var(--hueso);background:transparent;border:0;border-bottom:1px solid #4A5056;padding:10px 0;border-radius:0}
+select{appearance:none}
+select option{color:#111}
+textarea{resize:vertical;min-height:84px}
+input:focus,textarea:focus,select:focus{outline:none;border-bottom-color:var(--hielo)}
+input::placeholder,textarea::placeholder{color:#6E747A}
+.consent{grid-column:1/-1;display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--gris);line-height:1.5}
+.consent input{width:20px;height:20px;margin-top:2px;accent-color:var(--hielo);flex:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:20px}
+.msg{font-size:15px;color:var(--gris)}
+.msg.error{color:var(--error)}
+.done{border:1px solid var(--linea);padding:40px}
+.done h3{font-size:26px;font-weight:600;margin:0 0 10px}
+.done p{margin:0;color:#CDD1D4}
+
+footer{border-top:1px solid var(--linea);padding:40px 0 56px;color:var(--gris);font-size:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+
+@media (max-width:860px){
+  .hero,.split{grid-template-columns:1fr;gap:48px}
+  .hero{padding:40px 0 72px}
+  form{grid-template-columns:1fr}
+  section{padding:64px 0}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <a class="brand" href="#" aria-label="Mente Fría, inicio">
+    <svg width="30" height="30" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="38" fill="none" stroke="#F2F0EB" stroke-width="5"/><line x1="14" y1="42" x2="70" y2="42" stroke="#8FB3CC" stroke-width="5"/></svg>
+    <span class="brand-name">MENTE FRÍA</span>
+  </a>
+  <span class="city">Medellín</span>
+</header>
+
+<main>
+<div class="hero">
+  <div>
+    <h1>Lote 001. Cincuenta personas lo probarán antes que nadie.</h1>
+    <p>Mente Fría es un cold brew de especialidad hecho en Medellín para empresarios e inversionistas. Antes de llegar al público, el primer lote se entrega a un grupo cerrado. Los lugares se asignan por solicitud.</p>
+    <a class="btn" href="#solicitud">Solicitar un lugar</a>
+  </div>
+  <div>
+    <div class="seats" id="seats" role="img" aria-label="Cincuenta lugares disponibles en el Lote 001"></div>
+    <p class="seats-caption">50 lugares en el Lote 001.</p>
+  </div>
+</div>
+
+<section>
+  <div class="split">
+    <h2>Hecho sin prisa.</h2>
+    <div>
+      <p class="lead">Café de especialidad colombiano, infusionado en frío durante 16 horas y filtrado dos veces. El resultado es un café suave, de baja acidez, que se sirve frío y se toma con calma.</p>
+      <ul class="specs">
+        <li><b>16 h</b><span>de infusión en frío</span></li>
+        <li><b>1:8</b><span>proporción café y agua</span></li>
+        <li><b>280 ml</b><span>por botella</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="split">
+    <h2>Para los primeros 50.</h2>
+    <ul class="perks">
+      <li><h3>Una botella numerada del Lote 001</h3><p>Cada botella lleva su número del 1 al 50. Nunca se repetirá.</p></li>
+      <li><h3>Acceso antes del lanzamiento público</h3><p>Pruebas el producto y opinas sobre la receta final antes de que salga al mercado.</p></li>
+      <li><h3>Una invitación a la presentación privada</h3><p>Un encuentro en Medellín con los fundadores y el resto del grupo. Fecha por confirmar.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section id="solicitud">
+  <div class="split">
+    <div>
+      <h2>Solicita tu lugar.</h2>
+      <p class="lead" style="margin-top:20px">Revisamos cada solicitud y te escribimos por WhatsApp si quedas en el grupo.</p>
+    </div>
+    <div id="form-area">
+      <form id="waitlist" novalidate>
+        <div class="field"><label for="nombre">Nombre completo</label><input id="nombre" name="nombre" autocomplete="name" required></div>
+        <div class="field"><label for="correo">Correo</label><input id="correo" name="correo" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="whatsapp">WhatsApp</label><input id="whatsapp" name="whatsapp" type="tel" autocomplete="tel" placeholder="+57 300 000 0000" required></div>
+        <div class="field"><label for="empresa">Empresa o proyecto</label><input id="empresa" name="empresa" autocomplete="organization" required></div>
+        <div class="field full"><label for="perfil">¿Cómo te describes?</label>
+          <select id="perfil" name="perfil" required>
+            <option value="">Elige una opción</option>
+            <option>Empresario o empresaria</option>
+            <option>Inversionista</option>
+            <option>Ejecutivo o directivo</option>
+            <option>Emprendedor o emprendedora</option>
+            <option>Otro</option>
+          </select>
+        </div>
+        <div class="field full"><label for="motivo">¿Por qué quieres estar en el Lote 001? (opcional)</label><textarea id="motivo" name="motivo" maxlength="400"></textarea></div>
+        <div class="hp" aria-hidden="true"><label for="sitio">Sitio web</label><input id="sitio" name="sitio" tabindex="-1" autocomplete="off"></div>
+        <label class="consent"><input type="checkbox" id="consentimiento" name="consentimiento" value="si" required>
+          <span>Autorizo a Mente Fría a tratar mis datos personales para gestionar mi solicitud al Lote 001 y contactarme sobre el lanzamiento, conforme a la Ley 1581 de 2012 y la <a href="politica-de-datos.html">política de tratamiento de datos</a>.</span>
+        </label>
+        <div class="form-foot">
+          <button class="btn" type="submit" id="enviar">Enviar solicitud</button>
+          <span class="msg" id="msg" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <span>Mente Fría Cold Brew. El arte de tomar decisiones.</span>
+  <span><a href="https://instagram.com/mentefria">Instagram</a></span>
+</footer>
+</div>
+
+<script>
+// 1. Pega aquí la URL de tu Google Apps Script (termina en /exec)
+const ENDPOINT = "https://script.google.com/macros/s/AKfycbypz4JifdiUpDG9D1L8YSUeUwYaTwWJqeQgpwc8s6ys5n6DOzVNNBAynwMmg-yFiu13uw/exec";
+
+// Asientos del hero
+(function(){
+  const box = document.getElementById("seats");
+  let html = "";
+  for (let i = 0; i < 50; i++) {
+    html += '<svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="36"/>' +
+            '<line x1="14" y1="42" x2="70" y2="42" style="animation-delay:' + (i * 30) + 'ms"/></svg>';
+  }
+  box.innerHTML = html;
+})();
+
+// Formulario
+const form = document.getElementById("waitlist");
+const msg = document.getElementById("msg");
+const btn = document.getElementById("enviar");
+
+function setMsg(text, isError){ msg.textContent = text; msg.className = "msg" + (isError ? " error" : ""); }
+
+form.addEventListener("submit", async function(e){
+  e.preventDefault();
+  if (form.sitio.value) return; // anti-spam
+  const required = ["nombre","correo","whatsapp","empresa","perfil"];
+  for (const name of required) {
+    if (!form[name].value.trim()) { setMsg("Completa todos los campos obligatorios."); msg.classList.add("error"); form[name].focus(); return; }
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.correo.value.trim())) { setMsg("Revisa el correo: parece incompleto.", true); form.correo.focus(); return; }
+  if (form.whatsapp.value.replace(/\D/g,"").length < 10) { setMsg("Escribe un número de WhatsApp con al menos 10 dígitos.", true); form.whatsapp.focus(); return; }
+  if (!form.consentimiento.checked) { setMsg("Para enviar la solicitud debes autorizar el tratamiento de datos.", true); return; }
+  if (!ENDPOINT.startsWith("https://")) { setMsg("El formulario aún no está conectado. Falta configurar el enlace de Apps Script.", true); return; }
+
+  btn.disabled = true; setMsg("Enviando…", false);
+  const data = new URLSearchParams(new FormData(form));
+  data.append("origen", document.referrer || "directo");
+  try {
+    await fetch(ENDPOINT, { method: "POST", mode: "no-cors", body: data });
+    document.getElementById("form-area").innerHTML =
+      '<div class="done"><h3>Solicitud recibida.</h3><p>Gracias, ' + form.nombre.value.split(" ")[0].replace(/[<>&"]/g,"") +
+      '. Revisaremos tu solicitud y te escribiremos por WhatsApp si quedas en el Lote 001.</p></div>';
+  } catch (err) {
+    btn.disabled = false;
+    setMsg("No se pudo enviar. Revisa tu conexión e inténtalo de nuevo.", true);
+  }
+});
+</script>
+</body>
+</html>
